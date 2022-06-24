@@ -39,12 +39,114 @@ How does it work? When we use a string literal in java, JVM checks if that strin
 
 Benefits: Memory allocation and creating a string are costly operations. It is possible to just use "==" instead of equals in Java to compare the strings.
 
-Resources:
+Note: Making strings using the "new" operator creates a new string everytime on heap no matter if that already exists on the heap or not.
+
+Resources and Refrences:
 
 - https://www.edureka.co/blog/java-string-pool/
 - https://www.baeldung.com/java-string-pool
 
-### Prerequisites 📋
+---
+
+## Aliases in Programming 🚀
+
+Aliases in programming is when 2 or more references refer to the same object. Alias in programming is considered a bad practice and it is shown to be very error prone.
+
+<h2 align="center">
+  <img src="./Images/aliasing.png" alt="Gatsby Simplefolio" width="100%">
+</h2>
+
+why is aliasing in programming error prone and a bad practice? The reason is the programmer at some point might change the state of the object. In that case, the other owners of the object might not be aware of the change. Hence, when used they might cause a problem.
+
+Use cases of aliasing:
+Aliases are useful when the objects that you work with are immutable such as strings in Java or integers in python. An example is string literals in Java. One or more refrences can refer to the same string.
+
+How does Java handle polymorphism and aliasing?
+
+Please consider the following code snippet:
+
+```
+class A {
+	public void methodParent() {
+		System.out.println("method in Parent");
+	}
+}
+
+class B extends A {
+	public void methodParent() {
+		System.out.println("override method in Child");
+	}
+
+	public void methodChild() {
+		System.out.println("method in Child");
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		B[] b = new B[10];
+		A[] a = b;
+
+		a[0] =  new A();
+		b[0].methodParent();
+	}
+}
+```
+
+Now consider following scenario:
+
+```
+public class Main {
+	public static void main(String[] args) {
+		B[] b = new B[10];
+		A[] a = b;
+
+		a[0] =  new A();
+		b[0].methodParent();
+	}
+}
+```
+
+This is what it looks like for refrences "a" and "b" in memory:
+
+<h2 align="center">
+  <img src="./Images/JavaAliasing.jpeg" alt="Gatsby Simplefolio" width="100%">
+</h2>
+
+Explanation of the code:
+
+We have aliases "a" and "b". After running the code snippet we will get:
+
+```
+Exception in thread “main” java.lang.ArrayStoreException: aliasingtest.A
+at aliasingtest.Main.main(Main.java:26)
+```
+
+The reason is becasue Java handles aliases during run-time. It is during run-time that it understands
+first element should be a B object, instead of A.
+
+To correc the code snippet we should write it as following:
+
+```
+B[] b = new B[10];
+A[] a = b;
+
+a[0] =  new B();
+b[0].methodParent();
+```
+
+which produces the following output:
+
+```
+override method in Child
+```
+
+Resources and Refrences:
+
+- https://stackoverflow.com/questions/43012375/java-polymorphism-aliasing-issue
+- https://dzone.com/articles/how-does-java-handle-aliasing
+
+---
 
 ```
 node@v10.16.0 or higher

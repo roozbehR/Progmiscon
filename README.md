@@ -10,19 +10,41 @@
 ⚡️ Pointers vs. Refrences\
 ⚡️ Statement vs. Expression
 
-To view a demo example, **[click here](https://gatsby-simplefolio.netlify.com/)**\
-To view a live example, **[click here](https://cobidev.com/)**
-
 ---
 
-## Getting Started 🚀
+## String Pool in Java 🚀
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+String pool in java is a pool of strings sorted on java heap memory.
+First let's look at the ways we can make a string in java. Consider the following:
+
+- Using the "new" operator
+
+```
+String s1 = new String("Hello");
+```
+
+- Using string literals
+
+```
+String s1 = "Hello";
+```
+
+Which one uses a string pool? String literals use the Java string pool.
+
+How does it work? When we use a string literal in java, JVM checks if that string exists in the string pool. If it does, it returns a reference to it. Otherwise, it allocates memory for it, puts it in the pool, and returns a reference.
+
+<h2 align="center">
+  <img src="./Images/String-pool-1.png" alt="Gatsby Simplefolio" width="100%">
+</h2>
+
+Benefits: Memory allocation and creating a string are costly operations. It is possible to just use "==" instead of equals in Java to compare the strings.
+
+Resources:
+
+- https://www.edureka.co/blog/java-string-pool/
+- https://www.baeldung.com/java-string-pool
 
 ### Prerequisites 📋
-
-You'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [NPM](http://npmjs.com)) installed on your computer.\
-Also you need to have installed [Gatsby CLI](https://www.gatsbyjs.org/docs/quick-start/)
 
 ```
 node@v10.16.0 or higher

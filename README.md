@@ -148,6 +148,24 @@ Resources and Refrences:
 
 ---
 
+## Interning in Programming 🚀
+
+Interning means that there is only one copy of a distinct string on the heap. Meaning that if you have two variables that point to a string of the same value, both of them are referring to the same memory address. Basically, interning in short means a process of storing only one copy of each distinct string value in memory.
+
+why is aliasing in programming error prone and a bad practice? The reason is the programmer at some point might change the state of the object. In that case, the other owners of the object might not be aware of the change. Hence, when used they might cause a problem.
+
+Use cases of aliasing:
+
+Interning is used because memory allocation is a costly operation.
+Objects other than string can also be interned.
+Only immutable objects can be interned.
+
+Resources and Refrences:
+
+- https://stackoverflow.com/questions/10578984/what-is-java-string-interning
+
+---
+
 ```
 node@v10.16.0 or higher
 npm@6.9.0 or higher

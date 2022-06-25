@@ -250,7 +250,10 @@ Remainder (modulo)    p1 % p2   p1.__mod__(p2)
 
 ```
 
+Resources and Refrences:
+
 - https://www.programiz.com/python-programming/operator-overloading
+- https://www.geeksforgeeks.org/operator-overloading-in-python/
 
 ---
 

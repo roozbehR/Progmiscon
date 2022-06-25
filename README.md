@@ -157,8 +157,8 @@ why is aliasing in programming error prone and a bad practice? The reason is the
 Use cases of aliasing:
 
 Interning is used because memory allocation is a costly operation.
-Objects other than string can also be interned.
-Only immutable objects can be interned.
+
+Notes: Objects other than string can also be interned. Only immutable objects can be interned.
 
 Resources and Refrences:
 
@@ -166,18 +166,91 @@ Resources and Refrences:
 
 ---
 
+## Overloading Operators 🚀
+
+What does it mean to overload an operator? It means to give an operator meaning beyond what its predefined operational meaning.
+
+Perhaps giving an example will help you to understand more. Please pay attention to the following example:
+
+Consider the + operator in python. It is used to add integers. It is used to merge lists. It is used to concatenate strings and…, you get the point. What if we want to give more abilities to this operator such that it will work on some object let's call it Point? Consider the code snippet below:
+
 ```
-node@v10.16.0 or higher
-npm@6.9.0 or higher
-git@2.17.1 or higher
-gatsby-cli@2.8.22 or higher
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+p1 = Point(1, 2)
+p2 = Point(2, 3)
+print(p1+p2) (**)
 ```
 
-Also, you can use [Yarn](https://yarnpkg.com/) instead of NPM ☝️
+If we run this code we get the following output/error:
 
 ```
-yarn@v1.21.1 or higher
+TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
 ```
+
+This means that the + operand still does not know how to add these two objects. In other terms it is not defined for + operator to add two points on the cartesian plane.
+
+In order for + operator to add to cordinates we have to update the class point by defining **add** method in that class. In other words, we are overloading the + operator.
+
+Before we continue, keep the following note in mind:
+Every operator has a special magic method associated with it. For example, when we use + what it does is that it dispatches and calls the magic method **add**. And basically this method does the job for us. Now, for every custom object we define this magic method inside that class. This is how we overload the operators and give them the knowledge how to operate on different objects. Now I am going to overload the + operator to be able to operate on Point objects:
+
+Now consider the following code snippet:
+
+```
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "({0},{1})".format(self.x, self.y)
+
+    def __add__(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Point(x, y)
+
+```
+
+If we run the following code:
+
+```
+p1 = Point(1, 2)
+p2 = Point(2, 3)
+print(p1+p2)
+
+```
+
+We get the following output:
+
+```
+# (3, 5)
+```
+
+Note: Every operator has a mafic method associated with it. Example:
+
+```
+Addition   p1 + p2  p1.__add__(p2)
+
+
+Subtraction   p1 - p2  p1.__sub__(p2)
+
+
+Multiplication    p1 * p2  p1.__mul__(p2)
+
+
+Bitwise AND   p1 & p2   p1.__and__(p2)
+
+
+Remainder (modulo)    p1 % p2   p1.__mod__(p2)
+
+
+```
+
+- https://www.programiz.com/python-programming/operator-overloading
 
 ---
 

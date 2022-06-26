@@ -300,7 +300,7 @@ We have three types of statements:
 
 Resources and Refrences:
 
-- https://www.programiz.com/python-programming/operator-overloading
-- https://www.geeksforgeeks.org/operator-overloading-in-python/
+- https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/expressions.html
+- https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/flow.html
 
 ---

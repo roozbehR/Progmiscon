@@ -257,6 +257,54 @@ Resources and Refrences:
 
 ---
 
+## Pointer VS. Reference 🚀
+
+Resources and Refrences:
+
+- https://www.programiz.com/python-programming/operator-overloading
+- https://www.geeksforgeeks.org/operator-overloading-in-python/
+
+---
+
+## Statement VS. Expression 🚀
+
+In rough words, expression is a line of code that can be evaluated to a value which can be used later in the program. On the other hand, a statement is a line of code that performs an action for us or makes an impact in the program.
+
+To be more formal we define expression to be:
+
+Some examples of expressions are following:
+
+```
+aChar = 'S'
+
+"Hello Worl" + "d"
+
+Character.isUpperCase(aChar)
+
+```
+
+An expression is a series of variables, operators, and method calls (constructed according to the syntax of the language) that evaluates to a single value.
+
+Statements are roughly equivalent to sentences in natural languages. A statement forms a complete unit of execution. The following types of expressions can be made into a statement by terminating the expression with a semicolon (;):
+
+- Assignment expressions
+- Any use of ++ or --
+- Method calls
+- Object creation expressions
+
+We have three types of statements:
+
+- Expression statements : When you terminate an expression with ";"
+- Declaration statements : When you declare a variable
+- Control flow statements : Used to execute statements conditionally, repeatedly, and etc.
+
+Resources and Refrences:
+
+- https://www.programiz.com/python-programming/operator-overloading
+- https://www.geeksforgeeks.org/operator-overloading-in-python/
+
+---
+
 ## How To Use 🔧
 
 From your command line, first clone Simplefolio:

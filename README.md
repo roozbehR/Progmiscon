@@ -58,7 +58,6 @@ Resources and Refrences:
 - https://blog.finxter.com/python-__len__-magic-method/
 - https://www.pythonlikeyoumeanit.com/Module4_OOP/Special_Methods.html
 - https://docs.python.org/release/2.7.3/reference/datamodel.
-- html#special-method-lookup-for-new-style-classes
 
 ### bool() function
 

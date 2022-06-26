@@ -12,6 +12,92 @@
 
 ---
 
+## Builtin Functions and Magic Methods 🚀
+
+### Magic Methods
+
+Magic methods or dunder methods are methods that are implicitly called by built in functions in python. Please consider the next few python built in function implementations to understand more about magic functions.
+
+### len() function
+
+len, which stands for length, is a function that basically gives the size of the things that are iterable in python. Consider following:
+
+```
+class Data:
+def **len**(self):
+return 42
+a = Data()
+print(len(a))
+
+# 42
+
+print(bool(a))
+
+# True --> Because 42 != 0
+```
+
+Basically what happens in the above example, is that the len method looks for magic method **len** and sees if it is defined or not. And if it is defined it calls it. You can roughly think of len as following:
+
+```
+Def len():
+  return object.**len**()
+```
+
+Question: What if an object does not have a **len** method defined? Then python will raise an exception that says
+
+```
+TypeError: object of type ‘...’ has no len().
+```
+
+Solution: Define a **len** method for that class.
+Please note that object from object is different and we override **len** to make it suit our purposes.
+
+Resources and Refrences:
+
+- https://stackoverflow.com/questions/2481421/difference-between-len-and-len
+- https://blog.finxter.com/python-__len__-magic-method/
+- https://www.pythonlikeyoumeanit.com/Module4_OOP/Special_Methods.html
+- https://docs.python.org/release/2.7.3/reference/datamodel.
+- html#special-method-lookup-for-new-style-classes
+
+### bool() function
+
+bool, which stands for boolean, is a function that basically gives the truth value associated with an object in python. Consider following:
+
+```
+class Data:
+def **bool**(self):
+return False
+x = Data()
+res = bool(x)
+print(res)
+
+# ... False ...
+```
+
+Basically what happens in the above example, is that the bool method looks for magic method **bool** and sees if it is defined or not. And if it is defined it calls it. You can roughly think of bool as following:
+
+```
+Def len():
+  return object.**bool**()
+```
+
+Question: What if an object does not have a **bool** method defined? Then python will use the default value which is always True.
+
+Question: What if the **bool** returns a non-bool value? In that case python throws TypeError: **bool** should return bool, returned:
+
+```
+...some non-bool value like str…
+```
+
+Please note that object from object is different and we override **bool** to make it suit our purposes.
+
+Resources:
+
+- https://blog.finxter.com/python-__bool__-magic-method/
+
+---
+
 ## String Pool in Java 🚀
 
 String pool in java is a pool of strings sorted on java heap memory.
@@ -20,13 +106,17 @@ First let's look at the ways we can make a string in java. Consider the followin
 - Using the "new" operator
 
 ```
+
 String s1 = new String("Hello");
+
 ```
 
 - Using string literals
 
 ```
+
 String s1 = "Hello";
+
 ```
 
 Which one uses a string pool? String literals use the Java string pool.
@@ -66,45 +156,52 @@ How does Java handle polymorphism and aliasing?
 Please consider the following code snippet:
 
 ```
+
 class A {
-	public void methodParent() {
-		System.out.println("method in Parent");
-	}
+public void methodParent() {
+System.out.println("method in Parent");
+}
 }
 
 class B extends A {
-	public void methodParent() {
-		System.out.println("override method in Child");
-	}
+public void methodParent() {
+System.out.println("override method in Child");
+}
 
-	public void methodChild() {
-		System.out.println("method in Child");
-	}
+    public void methodChild() {
+    	System.out.println("method in Child");
+    }
+
 }
 
 public class Main {
-	public static void main(String[] args) {
-		B[] b = new B[10];
-		A[] a = b;
+public static void main(String[] args) {
+B[] b = new B[10];
+A[] a = b;
 
-		a[0] =  new A();
-		b[0].methodParent();
-	}
+    	a[0] =  new A();
+    	b[0].methodParent();
+    }
+
 }
+
 ```
 
 Now consider following scenario:
 
 ```
-public class Main {
-	public static void main(String[] args) {
-		B[] b = new B[10];
-		A[] a = b;
 
-		a[0] =  new A();
-		b[0].methodParent();
-	}
+public class Main {
+public static void main(String[] args) {
+B[] b = new B[10];
+A[] a = b;
+
+    	a[0] =  new A();
+    	b[0].methodParent();
+    }
+
 }
+
 ```
 
 This is what it looks like for refrences "a" and "b" in memory:
@@ -118,8 +215,10 @@ Explanation of the code:
 We have aliases "a" and "b". After running the code snippet we will get:
 
 ```
+
 Exception in thread “main” java.lang.ArrayStoreException: aliasingtest.A
 at aliasingtest.Main.main(Main.java:26)
+
 ```
 
 The reason is becasue Java handles aliases during run-time. It is during run-time that it understands
@@ -128,17 +227,21 @@ first element should be a B object, instead of A.
 To correc the code snippet we should write it as following:
 
 ```
+
 B[] b = new B[10];
 A[] a = b;
 
-a[0] =  new B();
+a[0] = new B();
 b[0].methodParent();
+
 ```
 
 which produces the following output:
 
 ```
+
 override method in Child
+
 ```
 
 Resources and Refrences:
@@ -175,19 +278,23 @@ Perhaps giving an example will help you to understand more. Please pay attention
 Consider the + operator in python. It is used to add integers. It is used to merge lists. It is used to concatenate strings and…, you get the point. What if we want to give more abilities to this operator such that it will work on some object let's call it Point? Consider the code snippet below:
 
 ```
+
 class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
+def **init**(self, x=0, y=0):
+self.x = x
+self.y = y
 p1 = Point(1, 2)
 p2 = Point(2, 3)
-print(p1+p2) (**)
+print(p1+p2) (\*\*)
+
 ```
 
 If we run this code we get the following output/error:
 
 ```
+
 TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
+
 ```
 
 This means that the + operand still does not know how to add these two objects. In other terms it is not defined for + operator to add two points on the cartesian plane.
@@ -200,10 +307,11 @@ Every operator has a special magic method associated with it. For example, when 
 Now consider the following code snippet:
 
 ```
+
 class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
+def **init**(self, x=0, y=0):
+self.x = x
+self.y = y
 
     def __str__(self):
         return "({0},{1})".format(self.x, self.y)
@@ -218,6 +326,7 @@ class Point:
 If we run the following code:
 
 ```
+
 p1 = Point(1, 2)
 p2 = Point(2, 3)
 print(p1+p2)
@@ -227,26 +336,24 @@ print(p1+p2)
 We get the following output:
 
 ```
+
 # (3, 5)
+
 ```
 
 Note: Every operator has a mafic method associated with it. Example:
 
 ```
-Addition   p1 + p2  p1.__add__(p2)
 
+Addition p1 + p2 p1.**add**(p2)
 
-Subtraction   p1 - p2  p1.__sub__(p2)
+Subtraction p1 - p2 p1.**sub**(p2)
 
+Multiplication p1 \* p2 p1.**mul**(p2)
 
-Multiplication    p1 * p2  p1.__mul__(p2)
+Bitwise AND p1 & p2 p1.**and**(p2)
 
-
-Bitwise AND   p1 & p2   p1.__and__(p2)
-
-
-Remainder (modulo)    p1 % p2   p1.__mod__(p2)
-
+Remainder (modulo) p1 % p2 p1.**mod**(p2)
 
 ```
 
@@ -275,6 +382,7 @@ To be more formal we define expression to be:
 Some examples of expressions are following:
 
 ```
+
 aChar = 'S'
 
 "Hello Worl" + "d"
@@ -308,3 +416,7 @@ Resources and Refrences:
 - https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/flow.html
 
 ---
+
+```
+
+```

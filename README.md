@@ -298,6 +298,10 @@ We have three types of statements:
 - Declaration statements : When you declare a variable
 - Control flow statements : Used to execute statements conditionally, repeatedly, and etc.
 
+Note: An expression may be made of smaller pieces of expression.
+Question: Can you put expressions in a statement? Yes.
+Question: What about the other way around? No.
+
 Resources and Refrences:
 
 - https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/expressions.html

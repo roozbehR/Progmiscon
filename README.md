@@ -130,6 +130,12 @@ Benefits: Memory allocation and creating a string are costly operations. It is p
 
 Note: Making strings using the "new" operator creates a new string everytime on heap no matter if that already exists on the heap or not.
 
+### Hows and Whys
+
+How does JVM look for strings in the string pool?
+
+String pool in Java uses a Hashmap in its implementation. This means that Strings are used as Keys and thir refrence is used as the value of the Strings. This data structure is considered to be very effcient since it takes advantage of hashcode to access Strings in O(1) time.
+
 Resources and Refrences:
 
 - https://www.edureka.co/blog/java-string-pool/

@@ -138,8 +138,7 @@ String pool in Java uses a Hashmap in its implementation. This means that String
 
 Resources and Refrences:
 
-- https://www.edureka.co/blog/java-string-pool/
-- https://www.baeldung.com/java-string-pool
+- Java JVM refrence [pg.360,pg.364]
 
 ---
 

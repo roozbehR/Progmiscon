@@ -465,9 +465,3 @@ This only creates side effects in the program and does not return anything.
 Resources and Refrences:
 
 - Java language refrence: [pg.489,pg.491] and [pg.493] and [pg.547,pg.548] and [pg.680,pg.681]
-
----
-
-```
-
-```

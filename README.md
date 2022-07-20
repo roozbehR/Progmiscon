@@ -414,10 +414,57 @@ Note: An expression may be made of smaller pieces of expression.
 Question: Can you put expressions in a statement? Yes.
 Question: What about the other way around? No.
 
+### Hows and Whys
+
+⚡️ How is an assignment expression evaluated? What is its value?
+
+The result of assignment expression is the value of the variable after the assignment has occurred [pg. 681]
+
+In other words, the value of an assignment expression is like following:
+
+```
+type variable =  <value> is evaluated to be <value>.
+```
+
+Example:
+
+```
+char aChar;
+
+aChar = 'S';
+
+The value of " aChar = 'S' " is going to be 'S'
+```
+
+⚡️ How is assignment expression different from assignment statement?
+
+To understand how these two are different we have to understand what expression and what statements are:
+
+- Statements: Statements are independent units of execution in java and their aim is to be executed and possibly make side effects, which does not return any value in the program.
+
+- Expressions: On the other hand we have an expression which is a combination of variables, method calls, etc. that together are evaluated to a value that is returned.
+
+Now in the case of assignment expression, we have a line of code in the form of:
+
+```
+int var;
+
+var = 1 <-- assignment expression
+```
+
+This assignment expression returns a value of 1. How and Why it returns this value is explained above. Assignment stamtents on the other hand is the same line of code which is terminated with a semicolon, which looks like
+
+```
+int var;
+
+var = 1; <-- assignment statement
+```
+
+This only creates side effects in the program and does not return anything.
+
 Resources and Refrences:
 
-- https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/expressions.html
-- https://www.iitk.ac.in/esc101/05Aug/tutorial/java/nutsandbolts/flow.html
+- Java language refrence: [pg.489,pg.491] and [pg.493] and [pg.547,pg.548] and [pg.680,pg.681]
 
 ---
 

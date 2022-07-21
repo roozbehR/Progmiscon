@@ -465,3 +465,71 @@ This only creates side effects in the program and does not return anything.
 Resources and Refrences:
 
 - https://docs.oracle.com/javase/specs/jls/se18/jls18.pdf: [pg.489,pg.491] and [pg.493] and [pg.547,pg.548] and [pg.680,pg.681]
+
+---
+
+## Difference Between Statement and Expression in Different Programming Languages (Java, C++, C) 🚀
+
+Statement and expression pretty much have the same definition as I have defined above.
+
+The only difference is that some languages support more statements and expressions than others.
+
+As an example:
+
+```
+Unlike C and C++, the Java programming language has no goto statement.
+```
+
+or
+
+```
+Unlike C and C++, the Java programming language allows only certain forms of expressions to be used as expression statements.
+
+System.out.println("Hello world");  // OK
+
+But it is not legal to use a parenthesized expression:
+
+(System.out.println("Hello world")); // illegal <-- This is legal in C++ and C
+```
+
+Or they might have different syntax.
+
+As an example consider the following:
+
+```
+In java we have an assignment expression which is something like:
+
+int var;
+
+var = 1;
+
+var = 1  <-- assignment expression
+```
+
+On the other hand:
+
+```
+var = 1 <-- this does not return any value in python and it is a statement
+```
+
+However, this is constantly changing and after python 3.8 we do have assignment expressions which has the following form:
+
+```
+var := 1 <-- this is both an expression and a statement
+```
+
+Programming languages tend to inheret good features from one another everytime they get a new update.
+
+As an example in the java langauge refrence there are pages left blank for potential statements that might be added in future.
+
+Note: There are many kinds of statements in the Java programming language. Most correspond to statements in the C and C++ languages, but some are unique. [Java language reference pg.489]
+
+Resources and Refrences:
+
+- https://docs.python.org/3/whatsnew/3.8.html
+
+- Java language reference: [pg.489] and [pg.493]
+
+- Java language reference (statements): [pg.489,pg.542]
+
+- https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference?view=msvc-170 (statements and expressions part)

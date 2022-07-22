@@ -140,6 +140,8 @@ Resources and Refrences:
 
 - Java JVM refrence [pg.360,pg.364]
 
+- Effective Java Book by Joshua Block [pg.273,pg.274]
+
 ---
 
 ## Aliases in Programming 🚀
@@ -154,99 +156,6 @@ why is aliasing in programming error prone and a bad practice? The reason is the
 
 Use cases of aliasing:
 Aliases are useful when the objects that you work with are immutable such as strings in Java or integers in python. An example is string literals in Java. One or more refrences can refer to the same string.
-
-How does Java handle polymorphism and aliasing?
-
-Please consider the following code snippet:
-
-```
-
-class A {
-public void methodParent() {
-System.out.println("method in Parent");
-}
-}
-
-class B extends A {
-public void methodParent() {
-System.out.println("override method in Child");
-}
-
-    public void methodChild() {
-    	System.out.println("method in Child");
-    }
-
-}
-
-public class Main {
-public static void main(String[] args) {
-B[] b = new B[10];
-A[] a = b;
-
-    	a[0] =  new A();
-    	b[0].methodParent();
-    }
-
-}
-
-```
-
-Now consider following scenario:
-
-```
-
-public class Main {
-public static void main(String[] args) {
-B[] b = new B[10];
-A[] a = b;
-
-    	a[0] =  new A();
-    	b[0].methodParent();
-    }
-
-}
-
-```
-
-This is what it looks like for refrences "a" and "b" in memory:
-
-<h2 align="center">
-  <img src="./Images/JavaAliasing.jpeg" alt="Gatsby Simplefolio" width="100%">
-</h2>
-
-Explanation of the code:
-
-We have aliases "a" and "b". After running the code snippet we will get:
-
-```
-
-Exception in thread “main” java.lang.ArrayStoreException: aliasingtest.A
-at aliasingtest.Main.main(Main.java:26)
-
-```
-
-The reason is becasue Java handles aliases during run-time. It is during run-time that it understands
-first element should be a B object, instead of A.
-
-To correc the code snippet we should write it as following:
-
-```
-
-B[] b = new B[10];
-A[] a = b;
-
-a[0] = new B();
-b[0].methodParent();
-
-```
-
-which produces the following output:
-
-```
-
-override method in Child
-
-```
 
 Resources and Refrences:
 
@@ -267,9 +176,24 @@ Interning is used because memory allocation is a costly operation.
 
 Notes: Objects other than string can also be interned. Only immutable objects can be interned.
 
+### Hows and Whys
+
+⚡️ Why does an object have to be immutable to be able to intern it?
+
+The purpose of interning things is to be able to compare them by comparing their memory address; you ensure that you never create two objects with the same value (when the program requests the creation of a second object with the same value as an existing object, it instead receives a reference to the pre-existing object). This requires that the things you're interning be immutable; if the value of an interned object could change, comparing them by address isn't going to work.\
+\
+More importantly (quoted from Effective Java by Joshua Block):
+
+```
+This version uses a single String instance, rather than creating a new one each time it is executed.
+Furthermore, it is guaranteed that the object will be reused by any other code running in the same virtual machine that happens to contain the same string literal [JLS, 3.10.5].
+```
+
 Resources and Refrences:
 
-- https://stackoverflow.com/questions/10578984/what-is-java-string-interning
+- Effective Java by Joshua Block: [pg.20]
+
+- Java Language Reference: [part 3.10.5]
 
 ---
 
